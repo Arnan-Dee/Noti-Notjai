@@ -1,7 +1,7 @@
 import json
 import boto3
 import random
-
+import os
 
 def lambda_handler(event, context):
 
@@ -24,7 +24,8 @@ def lambda_handler(event, context):
     notification = random.randint(0, len(QA)-1)
     client = boto3.client('sns')
     response = client.publish(
-        TargetArn="arn:aws:sns:ap-northeast-1:502983918849:Test-101",
+        TargetArn=os.environ['topic_arn'],
         Message=QA[notification],
         Subject='This is just a JOKE.',
+        
     )

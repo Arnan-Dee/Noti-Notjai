@@ -1,11 +1,11 @@
 import json
 import boto3
-
+import os
 
 def lambda_handler(event, context):
     # TODO implement
     client = boto3.client('sns')
-    TopicArn = 'arn:aws:sns:ap-northeast-1:502983918849:Test-101'
+    TopicArn = os.environ['topic_arn']
     print(event)
     event = json.loads(event['body'])
     print(event)
