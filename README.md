@@ -80,7 +80,7 @@ Select runtime as Python.
 In the Permissions tab, expand it and click on Use an existing role. And expand the dropdown to select the role that you just create eg. LambdaToPubSubSNS. ![](./pictures/lambda-create-sub.png)
 Then, click on Create function.
 In Configuration tab below. Click on it. You will see the following screen. ![](./pictures/lambda-environment.png). Click on Environment variables. Click on Edit. We add topic arn to this envirionment so click Add environment variable. The key is "topic_arn", the value is your SNS topic arn.
-In code section, replace the give code with the code in [subscribe_lambda_function.py](./subscribe_lambda_function.py). Don't forget to click Deploy.
+In code section, replace the give code with the code in [subscribe_lambda_function.py](./subscribe_lambda_function.py). Make sure the file name in code console is lambda_function.py as it is provided by default. Don't forget to click Deploy.
 
 Go to lambda service page.
 Click on the Functions tab. You will see the following page.
@@ -92,7 +92,7 @@ Select runtime as Python.
 In the Permissions tab, expand it and click on Use an existing role. And expand the dropdown to select the role that you just create eg. LambdaToPubSubSNS. ![](./pictures/lambda-create-sub.png)
 Then, click on Create function.
 In Configuration tab below. Click on it. You will see the following screen. ![](./pictures/lambda-environment.png). Click on Environment variables. Click on Edit. We add topic arn to this envirionment so click Add environment variable. The key is "topic_arn", the value is your SNS topic arn.
-In code section, replace the give code with the code in [unsubscribe_lambda_function.py](./subscribe_lambda_function.py). Don't forget to click Deploy.
+In code section, replace the give code with the code in [unsubscribe_lambda_function.py](./unsubscribe_lambda_function.py). Make sure the file name in code console is lambda_function.py as it is provided by default. Don't forget to click Deploy.
 
 ### Step 4 - Create API Gateway
 
@@ -116,7 +116,7 @@ Click on the Functions tab. You will see the following page.
 ![](./pictures/lambda-function-page.png)
 Click on create function.
 Click on Author from scratch if not selected.
-Enter a name. Note that this function meant to produce a message at every interval set by you. So the name could be MessagePublisher but you can name it differently. Select runtime as Python. Select permission as in Step 3(use exiting role). Click create function. Paste code in [trigger_lambda_function.py](./trigger_lambda_function.py) to lambda code. Add topic arn to this envirionment so click Add environment variable. The key is "topic_arn", the value is your SNS topic arn. Click Deploy. In Function overview tab, click Add trigger. Select source as EventBridge. You can create a rule to publish message at different interval. In this case we create a rule name "PushEvery14O" to push every day at 14.00 pm. So we click Create rule, provide our role name, in Rule type select Schedule expression key in cron(0 14 ? \* \* \*).
+Enter a name. Note that this function meant to produce a message at every interval set by you. So the name could be MessagePublisher but you can name it differently. Select runtime as Python. Select permission as in Step 3(use exiting role). Click create function. Paste code in [trigger_lambda_function.py](./trigger_lambda_function.py) to lambda code. Add topic arn to this envirionment so click Add environment variable. The key is "topic_arn", the value is your SNS topic arn. Click Deploy. In Function overview tab, click Add trigger. Select source as EventBridge. You can create a rule to publish message at different interval. In this case we create a rule name "PushEvery14O" to push every day at 14.00 pmin UTC(if you want to use Thai timezone minus hour digit by 7). So we click Create rule, provide our role name, in Rule type select Schedule expression key in cron(0 14 ? \* \* \*).
 
 ### Step 7 - Test the System
 
